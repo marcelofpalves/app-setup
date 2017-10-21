@@ -58,3 +58,9 @@ typings/
 .env
 
 dist/
+resources/certificates/
+
+# ssl
+.csr
+.crt
+.key
