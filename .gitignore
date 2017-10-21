@@ -59,3 +59,8 @@ typings/
 
 dist/
 resources/certificates/
+
+# ssl
+.csr
+.crt
+.key
