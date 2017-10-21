@@ -2,12 +2,15 @@ import React, { Component } from 'react'
 
 export default class Template extends Component {
   static defaultProps = {
-    html: '',
+    root: '',
+    title: null,
+    link: null,
+    meta: null,
     lang: 'en'
   }
 
   render() {
-    const { html, lang } = this.props
+    const { root, title, meta, link, lang } = this.props
 
     return (
       <html lang={lang}>
@@ -18,11 +21,14 @@ export default class Template extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <link rel="manifest" href="site.webmanifest" />
+          {meta}
+          {title}
+          <link rel="manifest" href="manifest.json" />
           <link rel="apple-touch-icon" href="icon.png" />
+          {link}
         </head>
         <body>
-          <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
+          <div id="root" dangerouslySetInnerHTML={{ __html: root }} />
         </body>
       </html>
     )

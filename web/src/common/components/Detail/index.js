@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -16,6 +17,15 @@ class Detail extends Component {
 
     return (
       <div>
+        <Helmet
+          title="A ball"
+          meta={[
+            {
+              name: 'description',
+              content: 'A great title'
+            }
+          ]}
+        />
         <h1>
           Detail {product.id} {product.name}
         </h1>
