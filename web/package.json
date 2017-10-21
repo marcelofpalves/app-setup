@@ -5,13 +5,14 @@
   "author": "Marcelo Alves <marcelo.alves.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "browser:start": "webpack-dev-server"
+    "browser:start": "webpack-dev-server",
+    "server:start": "nodemon src/server/index.js --exec babel-node"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "compression": "^1.7.1",
-    "cors": "^2.8.4",
-    "express": "^4.16.2",
+    "body-parser": "1.18.2",
+    "compression": "1.7.1",
+    "cors": "2.8.4",
+    "express": "4.16.2",
     "graphql-tag": "2.5.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
@@ -24,6 +25,11 @@
     "babel-cli": "6.26.0",
     "babel-env": "2.4.1",
     "babel-loader": "7.1.2",
+    "husky": "0.14.3",
+    "jest": "21.2.1",
+    "lint-staged": "4.3.0",
+    "nodemon": "1.12.1",
+    "prettier": "1.7.4",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.3"
   }

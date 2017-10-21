@@ -9,7 +9,7 @@ export default class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/" component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path="/products" component={Listing} />
         <Route path="/product/:id" component={Detail} />
         <Route path="*" component={NotFound} />
