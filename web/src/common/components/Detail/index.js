@@ -16,7 +16,7 @@ class Detail extends Component {
     }
 
     return (
-      <div>
+      <article itemScope itemType="http://schema.org/Product">
         <Helmet
           title="A ball"
           meta={[
@@ -26,10 +26,8 @@ class Detail extends Component {
             }
           ]}
         />
-        <h1>
-          Detail {product.id} {product.name}
-        </h1>
-      </div>
+        <h1 itemProp="name">{product.name}</h1>
+      </article>
     )
   }
 }

@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   devServer: {
-    contentBase: path.join('resources', 'public')
+    contentBase: path.join('resources')
   },
   entry: path.join(__dirname, 'src', 'browser', 'index.js'),
   output: {

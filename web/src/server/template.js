@@ -21,14 +21,15 @@ export default class Template extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <meta name="theme-color" content="#222222" />
           {meta}
           {title}
           <link rel="manifest" href="manifest.json" />
           <link rel="apple-touch-icon" href="icon.png" />
-          {link}
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: root }} />
+          <script>{`window.__APOLLO_STATE__ = {}`}</script>
         </body>
       </html>
     )
