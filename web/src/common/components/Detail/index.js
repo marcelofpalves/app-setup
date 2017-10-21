@@ -1,12 +1,46 @@
 import React, { Component } from 'react'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
-export default class Detail extends Component {
+class Detail extends Component {
   render() {
-    const { match: { params: { id } } } = this.props
+    const { loading, error, product } = this.props.data
+
+    if (loading) {
+      return <div>loading</div>
+    }
+
+    if (error) {
+      return <div>error</div>
+    }
+
     return (
       <div>
-        <h1>Detail {id}</h1>
+        <h1>
+          Detail {product.id} {product.name}
+        </h1>
       </div>
     )
   }
 }
+
+const ProductQuery = gql`
+  query ProductQuery($id: ID!) {
+    product(id: $id) {
+      id
+      name
+    }
+  }
+`
+
+export default graphql(ProductQuery, {
+  options(ownProps) {
+    console.log(ownProps)
+    const { match: { params: { id } } } = ownProps
+    return {
+      variables: {
+        id
+      }
+    }
+  }
+})(Detail)
