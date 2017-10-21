@@ -1,10 +1,12 @@
+import service from '../service'
+
 export default {
   Query: {
-    product(args) {
-      return {
-        id: '2',
-        name: 'a product'
-      }
+    product(root, args) {
+      console.log('args', args)
+      const { id } = args
+
+      return service.getProductById(id)
     }
   }
 }
