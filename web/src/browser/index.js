@@ -1,4 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Routes from '../common/routing'
 
-ReactDOM.render(<h1>Hello App</h1>, document.getElementById('root'))
+ReactDOM.render(
+  <Router>
+    <Routes />
+  </Router>,
+  document.getElementById('root')
+)
