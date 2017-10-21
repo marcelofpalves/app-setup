@@ -1,0 +1,13 @@
+{
+  "name": "app-setup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/marcelofpalves/app-setup.git",
+  "author": "Marcelo Alves <marcelo.alves.dev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "api:start": "cd api && npm start",
+    "browser:start": "cd web && npm run browser:start",
+    "start": "npm run api:start & npm run browser:start"
+  }
+}

@@ -35,7 +35,6 @@ const ProductQuery = gql`
 
 export default graphql(ProductQuery, {
   options(ownProps) {
-    console.log(ownProps)
     const { match: { params: { id } } } = ownProps
     return {
       variables: {
