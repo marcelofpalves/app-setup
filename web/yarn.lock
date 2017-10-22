@@ -3830,7 +3830,7 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-node-fetch@^1.0.1, node-fetch@^1.7.3:
+node-fetch@1.7.3, node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
   dependencies:
@@ -4340,7 +4340,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
+prop-types@^15.5.0, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -4477,9 +4477,11 @@ react-helmet@5.2.0:
     prop-types "^15.5.4"
     react-side-effect "^1.1.0"
 
-react-loadable@5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.3.0.tgz#ee082ea7c40f0de4cfab5895cbf3c1594efee4e2"
+react-loadable@5.3.1:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.3.1.tgz#9699e9a08fed49bacd69caaa282034b62a76bcdd"
+  dependencies:
+    prop-types "^15.5.0"
 
 react-router-dom@4.2.2:
   version "4.2.2"
@@ -5003,7 +5005,7 @@ spdy-transport@^2.0.18:
     safe-buffer "^5.0.1"
     wbuf "^1.7.2"
 
-spdy@^3.4.1, spdy@^3.4.7:
+spdy@3.4.7, spdy@^3.4.1:
   version "3.4.7"
   resolved "https://registry.yarnpkg.com/spdy/-/spdy-3.4.7.tgz#42ff41ece5cc0f99a3a6c28aabb73f5c3b03acbc"
   dependencies:

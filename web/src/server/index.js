@@ -1,37 +1,19 @@
-import fs from 'fs'
-import path from 'path'
+import express from 'express'
+import spdy from 'spdy'
+import compression from 'compression'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { StaticRouter as Router } from 'react-router'
 import { ApolloProvider } from 'react-apollo'
 import Helmet from 'react-helmet'
 import Routes from '../common/routing'
-import express from 'express'
-import spdy from 'spdy'
-import compression from 'compression'
 import client from './api'
 import Template from './template'
-
-const publicPath = path.resolve(__dirname, '..', '..', 'resources', 'public')
-const certificatePath = path.resolve(
-  __dirname,
-  '..',
-  '..',
-  'resources',
-  'certificates'
-)
-
-// chrome://flags/#allow-insecure-localhost
-const options = {
-  key: fs.readFileSync(path.join(certificatePath, 'server.key')),
-  cert: fs.readFileSync(path.join(certificatePath, 'server.crt'))
-}
-
-console.log(options)
+import config from './config'
 
 const app = express()
 app.use(compression())
-app.use(express.static(publicPath))
+app.use(express.static(config.publicPath))
 
 app.get('*', (req, res) => {
   const context = {}
@@ -43,6 +25,7 @@ app.get('*', (req, res) => {
       </Router>
     </ApolloProvider>
   )
+  // always call Helmet.renderStatic after ReactDOMServer.renderToString
   const helmet = Helmet.renderStatic()
 
   const html =
@@ -60,7 +43,7 @@ app.get('*', (req, res) => {
 
 const PORT = 3002
 
-spdy.createServer(options, app).listen(PORT, err => {
+spdy.createServer(config.certificate, app).listen(PORT, err => {
   if (err) {
     console.error(err)
     return process.exit(1)
