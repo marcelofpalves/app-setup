@@ -4,6 +4,8 @@ import cors from 'cors'
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'
 import schema from './schema'
 
+const PORT = 4001
+
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
@@ -14,4 +16,4 @@ app.use(
     endpointURL: '/graphql'
   })
 )
-app.listen(4001)
+app.listen(PORT)
