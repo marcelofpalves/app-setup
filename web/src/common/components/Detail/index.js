@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -27,6 +28,7 @@ class Detail extends Component {
           ]}
         />
         <h1 itemProp="name">{product.name}</h1>
+        <Link to="/checkout">buy now</Link>
       </article>
     )
   }

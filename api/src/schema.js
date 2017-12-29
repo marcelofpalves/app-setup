@@ -7,6 +7,7 @@ const typeDefs = `
   
   type Query {
     product(id: ID!): Product
+    productSearch(first: Int): ProductsConnection
   }  
 `
 
