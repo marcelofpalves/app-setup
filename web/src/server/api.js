@@ -4,7 +4,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 
 export default new ApolloClient({
-  link: createHttpLink({ uri: 'http://localhost:4001/graphql', fetch }),
+  link: createHttpLink({ uri: process.env.API_URL, fetch }),
   cache: new InMemoryCache(),
   ssrMode: true
 })
