@@ -24,14 +24,27 @@ async function mapAsync(fn, collection) {
   return Promise.all(xs)
 }
 
+function mapFirebaseRecord(record) {
+  const { id, name, description, currency, price } = record
+  return {
+    id,
+    name,
+    description,
+    price: {
+      amount: price,
+      currency
+    }
+  }
+}
+
 export default {
   async getProductById(id) {
     const doc = await productsCollection.doc(id).get()
-    return doc.data()
+    return mapFirebaseRecord(doc.data())
   },
 
   async getProducts() {
     const snapshot = await productsCollection.get()
-    return mapAsync(async doc => doc.data(), snapshot)
+    return mapAsync(async doc => mapFirebaseRecord(doc.data()), snapshot)
   }
 }

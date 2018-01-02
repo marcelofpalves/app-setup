@@ -16,6 +16,8 @@ class Detail extends Component {
       return <div>error</div>
     }
 
+    const checkoutUrl = `/checkout/${product.id}`
+
     return (
       <article itemScope itemType="http://schema.org/Product">
         <Helmet
@@ -28,7 +30,10 @@ class Detail extends Component {
           ]}
         />
         <h1 itemProp="name">{product.name}</h1>
-        <Link to="/checkout">buy now</Link>
+        <p>
+          {product.price.amount} {product.price.currency}
+        </p>
+        <Link to={checkoutUrl}>buy now</Link>
       </article>
     )
   }
@@ -39,6 +44,10 @@ const ProductQuery = gql`
     product(id: $id) {
       id
       name
+      price {
+        amount
+        currency
+      }
     }
   }
 `

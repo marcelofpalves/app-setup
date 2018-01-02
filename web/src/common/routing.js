@@ -13,7 +13,7 @@ export default class Routes extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/products" component={Listing} />
         <Route path="/product/:id" component={Detail} />
-        <Route path="/checkout" component={Checkout} />
+        <Route path="/checkout/:productId" component={Checkout} />
         <Route path="*" component={NotFound} />
       </Switch>
     )
