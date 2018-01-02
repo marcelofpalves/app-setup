@@ -1,5 +1,5 @@
 import admin from 'firebase-admin'
-import db from '../resources/db'
+import dab from '../resources/db'
 import serviceAccount from '../resources/firebase.json'
 
 admin.initializeApp({
@@ -7,16 +7,31 @@ admin.initializeApp({
   databaseURL: 'https://setup-9a3f2.firebaseio.com'
 })
 
-const { productsById } = db
+const { productsById } = dab
+
+const db = admin.firestore()
+const productsCollection = db.collection('products')
+
+async function mapAsync(fn, collection) {
+  const xs = []
+
+  collection.forEach(item => {
+    const processed = fn(item)
+    console.log(processed)
+    xs.push(processed)
+  })
+
+  return Promise.all(xs)
+}
 
 export default {
   async getProductById(id) {
-    return productsById[id]
+    const doc = await productsCollection.doc(id).get()
+    return doc.data()
   },
 
   async getProducts() {
-    return Object.keys(productsById).map(key => {
-      return productsById[key]
-    })
+    const snapshot = await productsCollection.get()
+    return mapAsync(async doc => doc.data(), snapshot)
   }
 }

@@ -7,13 +7,11 @@ admin.initializeApp({
   databaseURL: 'https://setup-9a3f2.firebaseio.com'
 })
 
-let db = admin.database()
-let productsRef = db.ref('products')
+let db = admin.firestore()
+let productsCollection = db.collection('products')
 
-productsRef.set(data.productsById, err => {
-  if (err) {
-    console.log('Could not seed the dabase.', err.message)
-  } else {
-    console.log('Thank you. The database was seeded.')
-  }
+Object.keys(data.productsById).forEach(key => {
+  const doc = productsCollection.doc(key)
+  const product = data.productsById[key]
+  doc.set(product)
 })

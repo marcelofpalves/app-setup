@@ -10,6 +10,9 @@ export default {
 
     async productSearch(root, args) {
       const products = await service.getProducts({ filter: {} })
+
+      console.log(products)
+
       return {
         totalCount: products.length,
         edges: products.map((node, cursor) => ({
