@@ -1,4 +1,12 @@
+import admin from 'firebase-admin'
 import db from '../resources/db'
+
+const serviceAccount = require('../resources/firebase.json')
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://setup-9a3f2.firebaseio.com'
+})
 
 const { productsById } = db
 
