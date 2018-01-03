@@ -31,9 +31,12 @@ class Checkout extends Component {
   async handlePayment(e) {
     e.preventDefault()
 
+    const { data: { product: { price } } } = this.props
+    const { amount, currency } = price
+
     if (window.PaymentRequest) {
       try {
-        const result = await pay({ value: 65, currency: 'USD' })
+        const result = await pay({ value: amount, currency })
         console.log(result)
       } catch (err) {
         console.log(err)
@@ -45,9 +48,25 @@ class Checkout extends Component {
   }
 
   render() {
+    const { loading, error, product } = this.props.data
+
+    if (loading) {
+      return <div>loading</div>
+    }
+
+    if (error) {
+      return <div>error</div>
+    }
+
+    const { name, price } = product
+
     return (
       <div>
-        <p>some product</p>
+        <h1>Checkout</h1>
+        <p>{name}</p>
+        <p>
+          {price.amount} {price.currency}
+        </p>
         <div>
           <button onClick={this.handlePayment.bind(this)}>pay</button>
         </div>
@@ -61,6 +80,10 @@ const CheckoutProductQuery = gql`
     product(id: $id) {
       id
       name
+      price {
+        amount
+        currency
+      }
     }
   }
 `

@@ -5,7 +5,7 @@ import { ApolloProvider } from 'react-apollo'
 import Routes from '../common/routing'
 import client from './api'
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <ApolloProvider client={client}>
     <Router>
       <Routes />

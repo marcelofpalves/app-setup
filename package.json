@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "api:start": "cd api && npm start",
-    "browser:start": "cd web && npm run browser:start",
-    "start": "npm run api:start & npm run browser:start"
+    "web:start": "cd web && npm run start",
+    "start": "npm run api:start & npm run web:start"
   }
 }

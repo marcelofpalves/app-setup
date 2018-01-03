@@ -10,7 +10,7 @@ export default class Template extends Component {
   }
 
   render() {
-    const { root, title, meta, link, lang } = this.props
+    const { root, title, meta, link, lang, state } = this.props
 
     return (
       <html lang={lang}>
@@ -26,10 +26,31 @@ export default class Template extends Component {
           {title}
           <link rel="manifest" href="manifest.json" />
           <link rel="apple-touch-icon" href="icon.png" />
+          <style>
+            {`
+              * {
+                box-sizing: border-box;
+                position: relative;
+              }
+              
+              body {
+                font: 14/1.64 sans-serif;
+                color: #121212;
+              }
+            `}
+          </style>
         </head>
         <body>
           <div id="root" dangerouslySetInnerHTML={{ __html: root }} />
-          <script>{`window.__APOLLO_STATE__ = {}`}</script>
+
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.__APOLLO_STATE__ = ${JSON.stringify(state)}
+          `
+            }}
+          />
+          <script src="http://localhost:8080/bundle.js" />
         </body>
       </html>
     )
