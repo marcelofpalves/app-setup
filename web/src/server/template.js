@@ -31,10 +31,12 @@ export default class Template extends Component {
               * {
                 box-sizing: border-box;
                 position: relative;
+                margin: 0;
+                padding: 0;
               }
               
               body {
-                font: 14/1.64 sans-serif;
+                font: 14px/1.61803398875 sans-serif;
                 color: #121212;
               }
             `}
